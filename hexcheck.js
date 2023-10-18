@@ -10,7 +10,7 @@ function checkServerStatus(callback) {
     img.onerror = function() {
         callback(false);
     };
-    img.src = "http://192.168.0.175/admin/img/favicon.png"; // A resource (like a favicon) from the PiHole web interface
+    img.src = "http://192.168.0.175/admin/img/logo.svg"; // A resource (like a favicon) from the PiHole web interface
 }
 
 function checkServiceStatus(serverIp, servicePort, callback) {
