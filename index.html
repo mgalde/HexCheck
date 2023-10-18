@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server & Service Status</title>
+    <style>
+        .online { color: green; }
+        .offline { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Server & Service Status</h1>
+
+    <div>
+        <h2>Server 1</h2>
+        <p>Status: <span id="server1-status">Checking...</span></p>
+        <p>Service: <span id="server1-service">Checking...</span></p>
+    </div>
+
+    <!-- Repeat for other servers... -->
+
+    <script src="hexcheck.js"></script>
+</body>
+</html>
