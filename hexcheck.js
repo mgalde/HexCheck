@@ -1,16 +1,16 @@
 // Note: This is a very basic check, more robust methods would involve AJAX, Fetch API, etc.
 
-function checkServerStatus(serverIp, callback) {
+function checkServerStatus(callback) {
+    // Using an image to check if PiHole web interface is up.
     var img = new Image();
+    img.timeout = 5000; // 5 seconds timeout
     img.onload = function() {
         callback(true);
     };
     img.onerror = function() {
         callback(false);
     };
-
-    // This assumes servers will respond to a ping or request.
-    img.src = "http://" + serverIp;
+    img.src = "http://192.168.0.175/admin/img/favicon.png"; // A resource (like a favicon) from the PiHole web interface
 }
 
 function checkServiceStatus(serverIp, servicePort, callback) {
@@ -27,15 +27,14 @@ function checkServiceStatus(serverIp, servicePort, callback) {
 }
 
 // Example usage:
-checkServerStatus("192.168.0.175", function(isOnline) {
+checkServerStatus(function(isOnline) {
     document.getElementById("server1-status").textContent = isOnline ? "Online" : "Offline";
     document.getElementById("server1-status").className = isOnline ? "online" : "offline";
-
-    if (isOnline) {
-        checkServiceStatus("192.168.1.1", "8080", function(isServiceRunning) {
-            document.getElementById("server1-service").textContent = isServiceRunning ? "Running" : "Not Running";
-            document.getElementById("server1-service").className = isServiceRunning ? "online" : "offline";
-        });
+    
+    // Inferring DNS service status from web interface status:
+    document.getElementById("server1-service").textContent = isOnline ? "Likely Running" : "Not Running";
+    document.getElementById("server1-service").className = isOnline ? "online" : "offline";
+});
     }
 });
 
