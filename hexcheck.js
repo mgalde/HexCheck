@@ -27,7 +27,7 @@ function checkServiceStatus(serverIp, servicePort, callback) {
 }
 
 // Example usage:
-checkServerStatus("192.168.1.1", function(isOnline) {
+checkServerStatus("192.168.0.175", function(isOnline) {
     document.getElementById("server1-status").textContent = isOnline ? "Online" : "Offline";
     document.getElementById("server1-status").className = isOnline ? "online" : "offline";
 
