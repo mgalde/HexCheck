@@ -10,13 +10,13 @@ function checkServerStatus(serverIp, callback) {
     };
 
     // This assumes servers will respond to a ping or request.
-    img.src = "http://192.168.0.175/admin/" + serverIp;
+    img.src = "http://" + serverIp;
 }
 
 function checkServiceStatus(serverIp, servicePort, callback) {
     // Using fetch or AJAX to check if a service is running can be a bit more involved 
     // due to potential CORS issues. Here's a basic method:
-    fetch("http://192.168.0.175" + serverIp + ":53" + servicePort)
+    fetch("http://" + serverIp + ":53" + servicePort)
     .then(response => {
         if (response.ok) callback(true);
         else callback(false);
