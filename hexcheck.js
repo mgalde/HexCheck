@@ -35,7 +35,5 @@ checkServerStatus(function(isOnline) {
     document.getElementById("server1-service").textContent = isOnline ? "Likely Running" : "Not Running";
     document.getElementById("server1-service").className = isOnline ? "online" : "offline";
 });
-    }
-});
 
 // Repeat for other servers...
