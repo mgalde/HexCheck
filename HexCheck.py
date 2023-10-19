@@ -53,6 +53,8 @@ def draw_hexagon(canvas, x, y, size, fill_color, name):
     canvas_items.extend([hexagon, text])  # Add the hexagon and text items to the list
 
 def parse_config(filename):
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    config_file_path = os.path.join(dir_path, filename)
     if not os.path.exists(filename):
         default_config = [
             "1",
@@ -66,10 +68,10 @@ def parse_config(filename):
             "80",
             "Portal"
         ]
-        with open(filename, 'w') as file:
+        with open(config_file_path, 'w') as file:
             file.write('\n'.join(default_config))
         
-    with open(filename, 'r') as file:
+    with open(config_file_path, 'r') as file:
         lines = file.readlines()
         
         servers = []
