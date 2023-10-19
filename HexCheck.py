@@ -17,6 +17,8 @@ def is_host_alive(ip):
         return True
     except subprocess.CalledProcessError:
         return False
+    except subprocess.TimeoutExpired:  # Handle timeout explicitly
+        return False  # Host is not responding within the timeout
 
 
 def is_port_open(ip, port, timeout=1):
@@ -46,7 +48,7 @@ def draw_hexagon(canvas, x, y, size, fill_color, name):
         x-(size*1.5), y-(size/2)
     ]
     hexagon = canvas.create_polygon(coords, fill=fill_color)
-    font_choice = ("Impact", 12)
+    font_choice = ("DejaVu Sans", 12)
     text = canvas.create_text(x, y, fill="white", text=name, font=font_choice)
 
     #text = canvas.create_text(x, y, fill="white", text=name)  # Server name in the middle
@@ -136,7 +138,7 @@ def create_context_menu(event):
     context.post(event.x_root, event.y_root)
 
 root = tk.Tk()
-root.title("Network Visualization")
+root.title("IAES Network Visualization")
 root.configure(background='black')
 
 is_fullscreen = False  # To keep track of the fullscreen state
