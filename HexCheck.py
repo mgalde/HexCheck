@@ -138,7 +138,7 @@ def create_context_menu(event):
     context.post(event.x_root, event.y_root)
 
 root = tk.Tk()
-root.title("IAES Network Visualization")
+root.title("The Packet Network Visualization")
 root.configure(background='black')
 
 is_fullscreen = False  # To keep track of the fullscreen state
